@@ -13,5 +13,5 @@
     "**/*.tsx",
     ".expo/types/**/*.ts",
     "expo-env.d.ts"
-, "app/styles.jsx", "app/index.jsx", "app/Paginas/graph.jsx"  ]
+, "app/styles.jsx", "app/index.jsx", "app/Paginas/Categoria.jsx", "app/Paginas/Temporal.jsx", "app/Paginas/Empilhado.jsx"  ]
 }
