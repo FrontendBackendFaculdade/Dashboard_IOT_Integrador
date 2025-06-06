@@ -1,0 +1,57 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+
+model registros{
+  codigo Int @id @default(autoincrement())
+  codCor Int
+  codMaterial Int
+  codTamanho Int
+  dataMovimentacao DateTime @default(now())
+
+  cor              cores     @relation(fields: [codCor], references: [codigo])
+  material         materiais @relation(fields: [codMaterial], references: [codigo])
+  tamanho          tamanhos  @relation(fields: [codTamanho], references: [codigo])
+
+
+  @@map("registros")
+}
+
+
+model cores{
+  codigo Int @id @default(autoincrement())
+  nome String
+  registros registros[]
+
+  @@map("cores")
+}
+
+
+model materiais{
+  codigo Int @id @default(autoincrement())
+  tipo String
+  registros registros[]
+
+  @@map("materiais")
+}
+
+
+model tamanhos{
+  codigo Int @id @default(autoincrement())
+  tamanho String
+  registros registros[]
+
+  @@map("tamanhos")
+}
