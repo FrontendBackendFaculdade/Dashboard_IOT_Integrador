@@ -1,43 +1,77 @@
-// StackedBarChartComponent.jsx
+// app/Paginas/TamanhosPorCorChart.jsx
 
 import React from 'react';
-import { View, Text, ActivityIndicator, Dimensions } from 'react-native';
+import { View, Text, ActivityIndicator, StyleSheet, Dimensions } from 'react-native';
 import { StackedBarChart } from 'react-native-chart-kit';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { useChartData } from '../../hooks/useChartData';
-import { InfoMessage, chartConfig, sharedStyles } from '../chatComponents';
+
+// --- INÍCIO DOS COMPONENTES, CONSTANTES E ESTILOS INTEGRADOS ---
 
 const screenWidth = Dimensions.get('window').width;
 
-export default function StackedBarChartComponent() {
-    const { data: chartData, loading, error } = useChartData('/api/dados-empilhados');
-    
-    // Criando uma cópia da configuração para poder modificar sem afetar outros gráficos
-    const stackedBarChartConfig = {
-      ...chartConfig,
-      barPercentage: 0.7,
-    };
+const InfoMessage = ({ icon, title, message }) => (
+    <View style={styles.messageContainer}>
+        <MaterialCommunityIcons name={icon} size={48} color="#9aa5b1" />
+        <Text style={styles.messageTitle}>{title}</Text>
+        <Text style={styles.messageText}>{message}</Text>
+    </View>
+);
+
+const chartConfig = {
+    backgroundColor: '#ffffff',
+    backgroundGradientFrom: '#ffffff',
+    backgroundGradientTo: '#ffffff',
+    decimalPlaces: 0,
+    color: (opacity = 1) => `rgba(15, 52, 96, ${opacity})`,
+    labelColor: (opacity = 1) => `rgba(60, 60, 60, ${opacity})`,
+};
+
+const styles = StyleSheet.create({
+    container: {
+        backgroundColor: '#ffffff', borderRadius: 16, padding: 16, marginVertical: 10,
+        marginHorizontal: 10, shadowColor: '#000', shadowOffset: { width: 0, height: 2, },
+        shadowOpacity: 0.1, shadowRadius: 4, elevation: 5,
+    },
+    chartTitle: {
+        fontSize: 18, fontWeight: 'bold', color: '#1a2536',
+        marginBottom: 15, textAlign: 'center',
+    },
+    messageContainer: {
+        flex: 1, justifyContent: 'center', alignItems: 'center',
+        padding: 20, minHeight: 280,
+    },
+    messageTitle: {
+        fontSize: 18, fontWeight: 'bold', color: '#333', marginTop: 10,
+    },
+    messageText: {
+        fontSize: 14, color: '#6e7a8a', textAlign: 'center', marginTop: 5,
+    },
+});
+
+// --- FIM DOS COMPONENTES, CONSTANTES E ESTILOS INTEGRADOS ---
+
+export default function TamanhosPorCorChart() {
+    const { data: chartData, loading, error } = useChartData('/api/tamanhos-por-cor');
 
     if (loading) {
-        return <View style={sharedStyles.container}><ActivityIndicator size="large" color="#0f3460" /></View>;
+        return <View style={styles.container}><ActivityIndicator size="large" color="#0f3460" /></View>;
     }
-
     if (error) {
-        return <View style={sharedStyles.container}><InfoMessage icon="alert-circle-outline" title="Erro ao Carregar" message={error.message} /></View>;
+        return <View style={styles.container}><InfoMessage icon="alert-circle-outline" title="Erro ao Carregar" message={error.message} /></View>;
     }
-
     if (!chartData || chartData.labels.length === 0) {
-        return <View style={sharedStyles.container}><InfoMessage icon="information-outline" title="Sem Dados" message="Não há dados de vendas para exibir." /></View>;
+        return <View style={styles.container}><InfoMessage icon="information-outline" title="Sem Dados" message="Não há dados para exibir." /></View>;
     }
 
     return (
-        <View style={sharedStyles.container}>
-            <Text style={sharedStyles.chartTitle}>Vendas Empilhadas</Text>
+        <View style={styles.container}>
+            <Text style={styles.chartTitle}>Distribuição de Tamanhos por Cor</Text>
             <StackedBarChart
-                style={sharedStyles.chart}
                 data={chartData}
-                width={screenWidth - 40} // Largura ajustada
+                width={screenWidth - 32}
                 height={250}
-                chartConfig={stackedBarChartConfig}
+                chartConfig={{...chartConfig, barPercentage: 0.6}}
                 hideLegend={false}
             />
         </View>

@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 
 // O IP do seu servidor. Colocá-lo aqui facilita a alteração em um só lugar.
-const API_BASE_URL = 'http://10.108.34.73:3000';
+const API_BASE_URL = 'http://192.168.137.1:3000';
 
 export function useChartData(endpoint) {
     const [data, setData] = useState(null);
