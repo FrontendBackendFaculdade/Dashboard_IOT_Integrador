@@ -243,6 +243,13 @@ const PaginaAuthenticated = ({ handleLogout, loading }) => {
                     </TouchableOpacity>
                 </View>
 
+                <TouchableOpacity
+                        style={homeStyles.button}
+                        onPress={() => router.navigate('/Paginas/Sobre')}>
+                        <MaterialCommunityIcons name="format-list-bulleted" size={20} color="#fff" />
+                        <Text style={homeStyles.buttonText}>Sobre</Text>
+                    </TouchableOpacity>
+
                 <View style={homeStyles.bottomContainer}>
                     <TouchableOpacity
                         style={[homeStyles.logoutButton, loading && homeStyles.buttonDisabled]}
