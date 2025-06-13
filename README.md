@@ -1,50 +1,140 @@
-# Welcome to your Expo app 👋
+<div id="top">
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+<!-- HEADER STYLE: CLASSIC -->
+<div align="center">
 
-## Get started
+<img src="Dashboard_IOT_Integrador.png" width="30%" style="position: relative; top: 0; right: 0;" alt="Project Logo"/>
 
-1. Install dependencies
+# DASHBOARD_IOT_INTEGRADOR
 
-   ```bash
-   npm install
-   ```
+<em>Transforming IoT Data into Actionable Insights Instantly</em>
 
-2. Start the app
+<!-- BADGES -->
+<img src="https://img.shields.io/github/last-commit/FrontendBackendFaculdade/Dashboard_IOT_Integrador?style=flat&logo=git&logoColor=white&color=0080ff" alt="last-commit">
+<img src="https://img.shields.io/github/languages/top/FrontendBackendFaculdade/Dashboard_IOT_Integrador?style=flat&color=0080ff" alt="repo-top-language">
+<img src="https://img.shields.io/github/languages/count/FrontendBackendFaculdade/Dashboard_IOT_Integrador?style=flat&color=0080ff" alt="repo-language-count">
 
-   ```bash
-    npx expo start
-   ```
+<em>Built with the tools and technologies:</em>
 
-In the output, you'll find options to open the app in a
+<img src="https://img.shields.io/badge/Express-000000.svg?style=flat&logo=Express&logoColor=white" alt="Express">
+<img src="https://img.shields.io/badge/JSON-000000.svg?style=flat&logo=JSON&logoColor=white" alt="JSON">
+<img src="https://img.shields.io/badge/Markdown-000000.svg?style=flat&logo=Markdown&logoColor=white" alt="Markdown">
+<img src="https://img.shields.io/badge/npm-CB3837.svg?style=flat&logo=npm&logoColor=white" alt="npm">
+<img src="https://img.shields.io/badge/Firebase-DD2C00.svg?style=flat&logo=Firebase&logoColor=white" alt="Firebase">
+<img src="https://img.shields.io/badge/JavaScript-F7DF1E.svg?style=flat&logo=JavaScript&logoColor=black" alt="JavaScript">
+<img src="https://img.shields.io/badge/Nodemon-76D04B.svg?style=flat&logo=Nodemon&logoColor=white" alt="Nodemon">
+<br>
+<img src="https://img.shields.io/badge/React-61DAFB.svg?style=flat&logo=React&logoColor=black" alt="React">
+<img src="https://img.shields.io/badge/Yarn-2C8EBB.svg?style=flat&logo=Yarn&logoColor=white" alt="Yarn">
+<img src="https://img.shields.io/badge/TypeScript-3178C6.svg?style=flat&logo=TypeScript&logoColor=white" alt="TypeScript">
+<img src="https://img.shields.io/badge/Prisma-2D3748.svg?style=flat&logo=Prisma&logoColor=white" alt="Prisma">
+<img src="https://img.shields.io/badge/Expo-000020.svg?style=flat&logo=Expo&logoColor=white" alt="Expo">
+<img src="https://img.shields.io/badge/Axios-5A29E4.svg?style=flat&logo=Axios&logoColor=white" alt="Axios">
+<img src="https://img.shields.io/badge/Jest-C21325.svg?style=flat&logo=Jest&logoColor=white" alt="Jest">
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+</div>
+<br>
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+---
 
-## Get a fresh project
+## 📄 Table of Contents
 
-When you're ready, run:
+- [Overview](#-overview)
+- [Getting Started](#-getting-started)
+    - [Prerequisites](#-prerequisites)
+    - [Installation](#-installation)
+    - [Usage](#-usage)
+    - [Testing](#-testing)
 
-```bash
-npm run reset-project
+---
+
+## ✨ Overview
+
+Dashboard_IOT_Integrador is a robust developer tool designed to streamline the creation of cross-platform IoT dashboards using React Native and Expo. It offers a modular architecture with theme-aware components, real-time data visualization, and seamless backend integration, empowering developers to build engaging, scalable IoT management solutions efficiently.
+
+**Why Dashboard_IOT_Integrador?**
+
+This project simplifies the development of cross-platform IoT dashboards by providing a cohesive architecture and reusable components. The core features include:
+
+- 🎨 **🖥️ Cross-Platform Support:** Develop for Android, iOS, and web with a unified codebase.
+- 🔧 **🧩 Modular Components:** Reusable UI elements like themed text, containers, and interactive charts.
+- 📊 **📈 Real-Time Data Visualization:** Dynamic charts for monitoring production, inventory, and material data.
+- 🔒 **🔑 User Authentication:** Secure login, registration, and session management.
+- ⚙️ **🛠️ Developer-Friendly Setup:** Simplified configuration, project reset scripts, and testing utilities.
+- 🌐 **🌟 Backend Integration:** API endpoints and database schemas for seamless data management.
+
+---
+
+## 🚀 Getting Started
+
+### 📋 Prerequisites
+
+This project requires the following dependencies:
+
+- **Programming Language:** TypeScript
+- **Package Manager:** Npm, Yarn
+
+### ⚙️ Installation
+
+Build Dashboard_IOT_Integrador from the source and install dependencies:
+
+1. **Clone the repository:**
+
+    ```sh
+    ❯ git clone https://github.com/FrontendBackendFaculdade/Dashboard_IOT_Integrador
+    ```
+
+2. **Navigate to the project directory:**
+
+    ```sh
+    ❯ cd Dashboard_IOT_Integrador
+    ```
+
+3. **Install the dependencies:**
+
+**Using [npm](https://www.npmjs.com/):**
+
+```sh
+❯ npm install
+```
+**Using [yarn](https://yarnpkg.com/):**
+
+```sh
+❯ yarn install
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+### 💻 Usage
 
-## Learn more
+Run the project with:
 
-To learn more about developing your project with Expo, look at the following resources:
+**Using [npm](https://www.npmjs.com/):**
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+```sh
+npm start
+```
+**Using [yarn](https://yarnpkg.com/):**
 
-## Join the community
+```sh
+yarn start
+```
 
-Join our community of developers creating universal apps.
+### 🧪 Testing
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+Dashboard_iot_integrador uses the {__test_framework__} test framework. Run the test suite with:
+
+**Using [npm](https://www.npmjs.com/):**
+
+```sh
+npm test
+```
+**Using [yarn](https://yarnpkg.com/):**
+
+```sh
+yarn test
+```
+
+---
+
+<div align="left"><a href="#top">⬆ Return</a></div>
+
+---
