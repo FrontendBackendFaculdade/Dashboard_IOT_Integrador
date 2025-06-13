@@ -3,7 +3,7 @@
 <!-- HEADER STYLE: CLASSIC -->
 <div align="center">
 
-<img src="Dashboard_IOT_Integrador.png" width="30%" style="position: relative; top: 0; right: 0;" alt="Project Logo"/>
+<img src="dashboard_IOT_integrador.png" width="30%" style="position: relative; top: 0; right: 0;" alt="Project Logo"/>
 
 # DASHBOARD_IOT_INTEGRADOR
 
