@@ -110,30 +110,13 @@ Run the project with:
 **Using [npm](https://www.npmjs.com/):**
 
 ```sh
-npm start
+npx expo start
 ```
 **Using [yarn](https://yarnpkg.com/):**
 
 ```sh
 yarn start
 ```
-
-### 🧪 Testing
-
-Dashboard_iot_integrador uses the {__test_framework__} test framework. Run the test suite with:
-
-**Using [npm](https://www.npmjs.com/):**
-
-```sh
-npm test
-```
-**Using [yarn](https://yarnpkg.com/):**
-
-```sh
-yarn test
-```
-
----
 
 <div align="left"><a href="#top">⬆ Return</a></div>
 
