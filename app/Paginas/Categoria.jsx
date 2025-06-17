@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
     },
 });
 
-// --- FIM DOS COMPONENTES, CONSTANTES E ESTILOS INTEGRADOS ---
+
 
 export default function MixPorMaterialChart() {
     const { data: chartData, loading, error } = useChartData('/api/mix-por-material');

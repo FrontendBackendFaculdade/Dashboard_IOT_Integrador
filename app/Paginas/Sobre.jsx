@@ -1,10 +1,6 @@
-// app/Paginas/Integrantes.jsx
-
-import React from 'react';
 import { View, Text, StyleSheet, ScrollView, SafeAreaView, StatusBar } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
-// Armazenar os dados em um array facilita a manutenção e a renderização
 const integrantes = [
     { id: '1', nome: 'EIvold Santos' },
     { id: '2', nome: 'Welder Rafael' },

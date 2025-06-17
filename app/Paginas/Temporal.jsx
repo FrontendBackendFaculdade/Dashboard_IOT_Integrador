@@ -25,6 +25,12 @@ const chartConfig = {
     decimalPlaces: 0,
     color: (opacity = 1) => `rgba(15, 52, 96, ${opacity})`,
     labelColor: (opacity = 1) => `rgba(60, 60, 60, ${opacity})`,
+    // Cores específicas para cada dataset
+    propsForDots: {
+        r: "6",
+        strokeWidth: "2",
+        stroke: "#ffa726"
+    }
 };
 
 const styles = StyleSheet.create({
@@ -51,7 +57,6 @@ const styles = StyleSheet.create({
 
 // --- FIM DOS COMPONENTES, CONSTANTES E ESTILOS INTEGRADOS ---
 
-
 export default function ProducaoTempoChart() {
     const { data: chartData, loading, error } = useChartData('/api/producao-materiais-tempo');
     
@@ -65,16 +70,31 @@ export default function ProducaoTempoChart() {
         return <View style={styles.container}><InfoMessage icon="information-outline" title="Sem Dados" message="Não há dados de produção para exibir." /></View>;
     }
 
+    // Configurar cores específicas para cada dataset
+    const chartDataWithColors = {
+        ...chartData,
+        datasets: chartData.datasets.map((dataset, index) => ({
+            ...dataset,
+            color: index === 0 
+                ? (opacity = 1) => `rgba(15, 52, 96, ${opacity})` // Azul para Plástico
+                : (opacity = 1) => `rgba(255, 87, 34, ${opacity})`, // Laranja para Metal
+            strokeWidth: 3
+        }))
+    };
+
     return (
         <View style={styles.container}>
             <Text style={styles.chartTitle}>Produção: Plástico vs. Metal</Text>
             <LineChart
-                data={chartData}
+                data={chartDataWithColors}
                 width={screenWidth - 32} // padding horizontal (16*2)
                 height={250}
-                chartConfig={{...chartConfig, strokeWidth: 3}}
+                chartConfig={chartConfig}
                 bezier
                 withShadow={true}
+                withDots={true}
+                withInnerLines={false}
+                withOuterLines={true}
             />
         </View>
     );
