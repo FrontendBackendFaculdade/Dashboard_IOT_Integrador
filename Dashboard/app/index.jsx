@@ -26,14 +26,13 @@ import { useRouter } from 'expo-router';
 
 // --- CONFIGURAÇÃO FIREBASE (sem alterações) ---
 const firebaseConfig = {
-    apiKey: "AIzaSyB8PkMfiKp71BwpbPxZNSj3uJSUO24JipA",
-    authDomain: "agc-rem.firebaseapp.com",
-    databaseURL: "https://agc-rem-default-rtdb.firebaseio.com",
-    projectId: "agc-rem",
-    storageBucket: "agc-rem.firebasestorage.app",
-    messagingSenderId: "996806465064",
-    appId: "1:996806465064:web:e8899fba6597b214f0471d",
-    measurementId: "G-VMTRJ0R48J"
+    apiKey: "AIzaSyBIOsSJmGnXlgiXIQy7g0AdUijIXgEttsQ",
+    authDomain: "dashboardiot-e21e0.firebaseapp.com",
+    projectId: "dashboardiot-e21e0",
+    storageBucket: "dashboardiot-e21e0.firebasestorage.app",
+    messagingSenderId: "752290885765",
+    appId: "1:752290885765:web:b2669e12454167b62c79ec",
+    measurementId: "G-0RQZQL96EY"
 };
 
 const app = initializeApp(firebaseConfig);
@@ -88,6 +87,25 @@ export default function App() {
         }
     };
 
+    const handleBypassLogin = () => {
+        if (loading) return;
+        setLoading(true);
+        setError('');
+        
+        // Simula um usuário logado para bypass
+        const mockUser = {
+            uid: 'bypass-user-123',
+            email: 'bypass@dashboard.com',
+            displayName: 'Usuário de Desenvolvimento'
+        };
+        
+        // Define o usuário mock diretamente
+        setUser(mockUser);
+        setLoading(false);
+        
+        console.log('Bypass de login realizado com sucesso!');
+    };
+
     const handleLogout = async () => {
         if (loading) return;
         setLoading(true);
@@ -121,6 +139,7 @@ export default function App() {
                         isLogin={isLogin}
                         setIsLogin={setIsLogin}
                         handleAuthentication={handleAuthentication}
+                        handleBypassLogin={handleBypassLogin}
                         error={error}
                         showPassword={showPassword}
                         setShowPassword={setShowPassword}
@@ -135,7 +154,7 @@ export default function App() {
 // --- PÁGINA DE AUTENTICAÇÃO ESTILIZADA ---
 const PaginaAuth = ({
     email, setEmail, password, setPassword, isLogin, setIsLogin,
-    handleAuthentication, error, showPassword, setShowPassword, loading
+    handleAuthentication, handleBypassLogin, error, showPassword, setShowPassword, loading
 }) => (
     <View style={authStyles.container}>
         <StatusBar style="dark" />
@@ -188,6 +207,16 @@ const PaginaAuth = ({
                     <Text style={authStyles.buttonText}>{isLogin ? 'Entrar' : 'Inscrever-se'}</Text>
                 )}
             </TouchableOpacity>
+
+            {/* Botão de Bypass para Desenvolvimento */}
+            <TouchableOpacity
+                style={[authStyles.bypassButton, loading && authStyles.buttonDisabled]}
+                onPress={handleBypassLogin}
+                disabled={loading}
+            >
+                <MaterialCommunityIcons name="developer-board" size={20} color="#fff" />
+                <Text style={authStyles.bypassButtonText}>Bypass Login (Dev)</Text>
+            </TouchableOpacity>
         </View>
 
         <TouchableOpacity onPress={() => setIsLogin(!isLogin)} style={authStyles.toggleContainer}>
@@ -222,32 +251,39 @@ const PaginaAuthenticated = ({ handleLogout, loading }) => {
                     <Text style={homeStyles.cardTitle}>Navegação Principal</Text>
                     
                     <TouchableOpacity
-                        style={homeStyles.button}
-                        onPress={() => router.navigate('/Paginas/Categoria')}>
-                        <MaterialCommunityIcons name="format-list-bulleted" size={20} color="#fff" />
-                        <Text style={homeStyles.buttonText}>Categorias</Text>
+                        style={[homeStyles.button, homeStyles.primaryButton]}
+                        onPress={() => router.navigate('/Paginas/DashboardBI')}>
+                        <MaterialCommunityIcons name="chart-box" size={20} color="#fff" />
+                        <Text style={homeStyles.buttonText}>Dashboard BI Completo</Text>
                     </TouchableOpacity>
 
                     <TouchableOpacity
                         style={homeStyles.button}
                         onPress={() => router.navigate('/Paginas/Temporal')}>
                         <MaterialCommunityIcons name="chart-timeline-variant" size={20} color="#fff" />
-                        <Text style={homeStyles.buttonText}>Temporal</Text>
+                        <Text style={homeStyles.buttonText}>Monitoramento em Tempo Real</Text>
+                    </TouchableOpacity>
+
+                    <TouchableOpacity
+                        style={homeStyles.button}
+                        onPress={() => router.navigate('/Paginas/Categoria')}>
+                        <MaterialCommunityIcons name="chart-box-outline" size={20} color="#fff" />
+                        <Text style={homeStyles.buttonText}>Análise de Saúde dos Sensores</Text>
                     </TouchableOpacity>
 
                     <TouchableOpacity
                         style={homeStyles.button}
                         onPress={() => router.navigate('/Paginas/Empilhado')}>
-                        <MaterialCommunityIcons name="chart-bar-stacked" size={20} color="#fff" />
-                        <Text style={homeStyles.buttonText}>Empilhado</Text>
+                        <MaterialCommunityIcons name="chart-scatter-plot" size={20} color="#fff" />
+                        <Text style={homeStyles.buttonText}>Análise de Correlação</Text>
                     </TouchableOpacity>
                 </View>
 
                 <TouchableOpacity
                         style={homeStyles.button}
                         onPress={() => router.navigate('/Paginas/Sobre')}>
-                        <MaterialCommunityIcons name="format-list-bulleted" size={20} color="#fff" />
-                        <Text style={homeStyles.buttonText}>Sobre</Text>
+                        <MaterialCommunityIcons name="information-outline" size={20} color="#fff" />
+                        <Text style={homeStyles.buttonText}>Sobre o Sistema</Text>
                     </TouchableOpacity>
 
                 <View style={homeStyles.bottomContainer}>
@@ -354,6 +390,26 @@ const authStyles = StyleSheet.create({
         fontSize: 18,
         fontWeight: 'bold',
     },
+    bypassButton: {
+        backgroundColor: '#6b7280',
+        padding: 15,
+        borderRadius: 8,
+        alignItems: 'center',
+        flexDirection: 'row',
+        justifyContent: 'center',
+        marginTop: 10,
+        shadowColor: "#000",
+        shadowOffset: { width: 0, height: 2, },
+        shadowOpacity: 0.23,
+        shadowRadius: 2.62,
+        elevation: 4,
+    },
+    bypassButtonText: {
+        color: 'white',
+        fontSize: 16,
+        fontWeight: 'bold',
+        marginLeft: 8,
+    },
     toggleContainer: {
         marginTop: 30,
     },
@@ -428,6 +484,11 @@ const homeStyles = StyleSheet.create({
         shadowOpacity: 0.25,
         shadowRadius: 3.84,
         elevation: 5,
+    },
+    primaryButton: {
+        backgroundColor: '#1e3a8a',
+        borderWidth: 2,
+        borderColor: '#3b82f6',
     },
     buttonText: {
         color: 'white',
